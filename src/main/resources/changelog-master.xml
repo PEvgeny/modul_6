@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="CREATE-TABLE" author="epolupanov">
+        <preConditions onFail="MARK_RAN">
+            <not> <tableExists tableName="books"/> </not>
+        </preConditions>
+        <createTable tableName="books">
+            <column name="id" type="NUMERIC(19)" autoIncrement="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)" autoIncrement="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author" type="VARCHAR(255)" autoIncrement="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="year" type="NUMERIC(19)" autoIncrement="false">
+                <constraints nullable="true"/>
+            </column>
+            <column name="category" type="VARCHAR(255)" autoIncrement="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="books" columnNames="id" constraintName="pk_book"/>
+    </changeSet>
+
+</databaseChangeLog>

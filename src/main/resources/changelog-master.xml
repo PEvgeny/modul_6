@@ -9,8 +9,9 @@
         <preConditions onFail="MARK_RAN">
             <not> <tableExists tableName="books"/> </not>
         </preConditions>
+        <createSequence sequenceName="book_sequence" incrementBy="1" startValue="1" />
         <createTable tableName="books">
-            <column name="id" type="NUMERIC(19)" autoIncrement="false">
+            <column name="id" type="NUMERIC(19)" autoIncrement="false" defaultValueSequenceNext="book_sequence">
                 <constraints nullable="false"/>
             </column>
             <column name="name" type="VARCHAR(255)" autoIncrement="false">
